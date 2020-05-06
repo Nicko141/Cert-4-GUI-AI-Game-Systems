@@ -6,13 +6,9 @@ using System;//Allows Serializable
 
 public class KeyBindManager : MonoBehaviour
 {
-    public static Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
-    public Text forward, backward, left, right;
-    public GameObject currentKey;
-    public Color32 changed = new Color32(39, 171, 249, 255);
-    public Color32 selected = new Color32(239, 116, 36, 255);
+   
     //custom
-
+    public static Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
     //array of custom
     [Serializable]
     public struct KeyUISetup //creating a custom variable type of group variables
@@ -22,6 +18,11 @@ public class KeyBindManager : MonoBehaviour
         public string defaultKey;
     }
     public KeyUISetup[] baseSetup;
+    
+    //public Text forward, backward, left, right;
+    public GameObject currentKey;
+    public Color32 changed = new Color32(39, 171, 249, 255);
+    public Color32 selected = new Color32(239, 116, 36, 255);
     void Start()
     {//sets keys to player prefs
         //for loop to add keys to the dictionary
@@ -32,6 +33,7 @@ public class KeyBindManager : MonoBehaviour
             //sets display text for keys
             baseSetup[i].keyDisplayText.text = keys[baseSetup[i].keyName].ToString();
         }
+        
        /* keys.Add("Forward", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Forward","W")));
         keys.Add("Backward", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Backward", "S")));
         keys.Add("Left", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "A")));
@@ -47,6 +49,7 @@ public class KeyBindManager : MonoBehaviour
     }
     private void OnGUI()
     {
+
         if (currentKey != null)
         {
 
@@ -74,6 +77,7 @@ public class KeyBindManager : MonoBehaviour
                 currentKey.GetComponent<Image>().color = changed;
                 currentKey = null;
             }
+            
         }
 
     }
