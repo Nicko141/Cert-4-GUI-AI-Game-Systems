@@ -4426,10 +4426,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd8f54d32195bc4cb6c46391949e939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: {fileID: 0}
-  backward: {fileID: 0}
-  left: {fileID: 0}
-  right: {fileID: 0}
+  baseSetup:
+  - keyName: Forward
+    keyDisplayText: {fileID: 1908925473}
+    defaultKey: W
+  - keyName: Left
+    keyDisplayText: {fileID: 1655748117}
+    defaultKey: A
+  - keyName: Right
+    keyDisplayText: {fileID: 1934639965}
+    defaultKey: D
+  - keyName: Backward
+    keyDisplayText: {fileID: 982333511}
+    defaultKey: S
   currentKey: {fileID: 0}
   changed:
     serializedVersion: 2
@@ -4437,19 +4446,6 @@ MonoBehaviour:
   selected:
     serializedVersion: 2
     rgba: 4280579311
-  baseSetup:
-  - keyName: Forward
-    keyDisplayText: {fileID: 1908925473}
-    defaultKey: w
-  - keyName: Left
-    keyDisplayText: {fileID: 1655748117}
-    defaultKey: a
-  - keyName: Right
-    keyDisplayText: {fileID: 1934639965}
-    defaultKey: d
-  - keyName: Backward
-    keyDisplayText: {fileID: 982333511}
-    defaultKey: s
 --- !u!1 &1364400827
 GameObject:
   m_ObjectHideFlags: 0
