@@ -26,13 +26,17 @@ public class KeyBindManager : MonoBehaviour
     void Start()
     {//sets keys to player prefs
         //for loop to add keys to the dictionary
-        for (int i = 0; i < baseSetup.Length; i++)
+        if (baseSetup.Length == 0)
         {
-            //add key according to the save or default
-            keys.Add(baseSetup[i].keyName, (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(baseSetup[i].keyName, baseSetup[i].defaultKey)));
-            //sets display text for keys
-            baseSetup[i].keyDisplayText.text = keys[baseSetup[i].keyName].ToString();
+            for (int i = 0; i < baseSetup.Length; i++)
+            {
+                //add key according to the save or default
+                keys.Add(baseSetup[i].keyName, (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(baseSetup[i].keyName, baseSetup[i].defaultKey)));
+                //sets display text for keys
+                baseSetup[i].keyDisplayText.text = keys[baseSetup[i].keyName].ToString();
+            }
         }
+        
         
        /* keys.Add("Forward", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Forward","W")));
         keys.Add("Backward", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Backward", "S")));
