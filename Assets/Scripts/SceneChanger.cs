@@ -10,6 +10,7 @@ public class SceneChanger : MonoBehaviour
     public AudioMixer masterAudio;
     public AudioSource audioSource;
     public AudioClip[] clicks;
+    public GameObject OptionsPanel;
     
     #region Audio
     public void PlayClick()
@@ -56,6 +57,7 @@ public class SceneChanger : MonoBehaviour
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(sceneIndex);
     }
+    
     //exit to desktop/quit
     public void ExitToDesktop()
     {

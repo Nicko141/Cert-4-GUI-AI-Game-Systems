@@ -19,6 +19,6 @@ public class AnyKey : MonoBehaviour
             menuPanel.SetActive(true);
             pressAnyKeyPanel.SetActive(false);
         }
+
     }
-    
 }

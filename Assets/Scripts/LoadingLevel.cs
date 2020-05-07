@@ -9,6 +9,8 @@ public class LoadingLevel : MonoBehaviour
     public GameObject loadingScreen;
     public Image progressBar;
     public Text progressText;
+    public Animator transition;
+    public float transitionTime = 1f;
 
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
@@ -21,6 +23,9 @@ public class LoadingLevel : MonoBehaviour
             progressText.text = progress * 100 + "%";
             yield return null;
         }
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
     }
     public void LoadLevel (int scenenIndex)
     {

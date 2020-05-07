@@ -16,6 +16,9 @@ public class PlayerMovement : Character
     public float Health = 100;
     public float MaxHealth = 100;
     public Vector3 moveDirection;
+    public static bool isDead;
+    public Text deathText;
+    public Image deathImage;
     
 
     public void TakeDamage(float damage)
@@ -74,19 +77,47 @@ public class PlayerMovement : Character
 
         if (Health <= 0)
         {
-            Destroy(gameObject, 5f);
+            Death();
         }
        
     }
-    private void FixedUpdate()
+    #region Death and Respawn
+
+    void Death()
     {
-
-        //Vector3 movement = new Vector3(_moveHorizontal, 0, _moveForward);
-        //_rb.AddForce(movement * speed);
-        
-
+        //set death flag to dead
+        isDead = true;
+        //clear existing text just in case
+        deathText.text = "";
+        //trigger death screen
+        deathImage.GetComponent<Animator>().SetTrigger("isDead");
+        //in 2 secs set death text when we die
+        Invoke("DeathText", 2f);
+        //in 6 secs set respawn text when we respawn
+        Invoke("RespawnText", 6f);
+        //in 9 secs respawn us
+        Invoke("Respawn", 9f);
     }
-    
+    void DeathText()
+    {
+        deathText.text = "Death calls to you... are you gonna answer him?";
+    }
+    void RespawnText()
+    {
+        deathText.text = "So you refused to answer him, But you can only refuse for so long... He'll be waiting";
+    }
+    void Respawn()
+    {
+        //reset everything
+        deathText.text = "";
+        isDead = false;
+        //load position
+        controller.transform.position = new Vector3(18, 1, -3);
+        //respawn
+        deathImage.GetComponent<Animator>().SetTrigger("Respawn");
+    }
+    #endregion
+
 
 
 
