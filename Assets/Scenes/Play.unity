@@ -5636,8 +5636,8 @@ MonoBehaviour:
   Health: 10
   MaxHealth: 10
   moveDirection: {x: 0, y: 0, z: 0}
-  deathText: {fileID: 0}
-  deathImage: {fileID: 0}
+  deathText: {fileID: 1269709378}
+  deathImage: {fileID: 6116987563293995131}
 --- !u!143 &1732395038
 CharacterController:
   m_ObjectHideFlags: 0

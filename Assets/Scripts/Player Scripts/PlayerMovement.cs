@@ -18,7 +18,7 @@ public class PlayerMovement : Character
     public Vector3 moveDirection;
     public static bool isDead;
     public Text deathText;
-    public Image deathImage;
+    public Canvas deathImage;
     
 
     public void TakeDamage(float damage)
@@ -111,6 +111,7 @@ public class PlayerMovement : Character
         //reset everything
         deathText.text = "";
         isDead = false;
+        Health = MaxHealth;
         //load position
         controller.transform.position = new Vector3(18, 1, -3);
         //respawn
