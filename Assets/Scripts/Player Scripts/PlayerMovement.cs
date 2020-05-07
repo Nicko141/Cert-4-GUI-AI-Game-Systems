@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using System;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 //[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : Character
@@ -97,6 +98,8 @@ public class PlayerMovement : Character
         Invoke("RespawnText", 6f);
         //in 9 secs respawn us
         Invoke("Respawn", 9f);
+        //restart
+        Invoke("Retry", 9.5f);
     }
     void DeathText()
     {
@@ -111,12 +114,16 @@ public class PlayerMovement : Character
         //reset everything
         deathText.text = "";
         isDead = false;
-        Health = MaxHealth;
-        //load position
-        controller.transform.position = new Vector3(18, 1, -3);
-        //respawn
+        
         deathImage.GetComponent<Animator>().SetTrigger("Respawn");
-                       
+        Health = MaxHealth;
+        controller.transform.position = new Vector3(18, 1, -3);
+
+    }
+    void Retry()
+    {
+        //loads last save
+        SceneManager.LoadScene(1);
     }
     #endregion
 
