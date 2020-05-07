@@ -18,7 +18,7 @@ public class PlayerMovement : Character
     public Vector3 moveDirection;
     public static bool isDead;
     public Text deathText;
-    public Canvas deathImage;
+    public Image deathImage;
     
 
     public void TakeDamage(float damage)
@@ -75,7 +75,7 @@ public class PlayerMovement : Character
 
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (Health <= 0)
+        if (Health <= 0 && !isDead)
         {
             Death();
         }
@@ -94,9 +94,9 @@ public class PlayerMovement : Character
         //in 2 secs set death text when we die
         Invoke("DeathText", 2f);
         //in 6 secs set respawn text when we respawn
-        Invoke("RespawnText", 6f);
+        Invoke("RespawnText", 4f);
         //in 9 secs respawn us
-        Invoke("Respawn", 9f);
+        Invoke("Respawn", 6f);
     }
     void DeathText()
     {
