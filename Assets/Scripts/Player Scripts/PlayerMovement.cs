@@ -94,9 +94,9 @@ public class PlayerMovement : Character
         //in 2 secs set death text when we die
         Invoke("DeathText", 2f);
         //in 6 secs set respawn text when we respawn
-        Invoke("RespawnText", 4f);
+        Invoke("RespawnText", 6f);
         //in 9 secs respawn us
-        Invoke("Respawn", 6f);
+        Invoke("Respawn", 9f);
     }
     void DeathText()
     {
@@ -116,6 +116,7 @@ public class PlayerMovement : Character
         controller.transform.position = new Vector3(18, 1, -3);
         //respawn
         deathImage.GetComponent<Animator>().SetTrigger("Respawn");
+                       
     }
     #endregion
 
