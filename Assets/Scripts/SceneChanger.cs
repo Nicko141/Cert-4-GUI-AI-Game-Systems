@@ -48,12 +48,14 @@ public class SceneChanger : MonoBehaviour
         {
             masterAudio.SetFloat("isMutedVolume", -80);
             //mute.isOn;
+            PlayerPrefs.SetInt("isMuted", true ? 1 : 0);
             PlayerPrefs.SetFloat("isMutedVolume", -80);
             PlayerPrefs.Save();
         }
         else
         {
             masterAudio.SetFloat("isMutedVolume", 0);
+            PlayerPrefs.SetInt("isMuted", false ? 1 : 0);
             PlayerPrefs.SetFloat("isMutedVolume", 0);
             PlayerPrefs.Save();
         }
@@ -130,7 +132,7 @@ public class SceneChanger : MonoBehaviour
         masterAudio.SetFloat("isMutedVolume", PlayerPrefs.GetFloat("isMutedVolume"));
         music.value = PlayerPrefs.GetFloat("volume");
         SFX.value = PlayerPrefs.GetFloat("SFXvolume");
-
+        mute.isOn = PlayerPrefs.GetInt("isMuted") == 1 ? true : false;
         
         ResolutionSetUp();
     }
