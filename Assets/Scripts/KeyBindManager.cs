@@ -26,8 +26,8 @@ public class KeyBindManager : MonoBehaviour
     void Start()
     {//sets keys to player prefs
         
-        if (baseSetup.Length == 0)//check if dictionary already has keys saved
-        {//for loop to add keys to the dictionary
+        
+        //for loop to add keys to the dictionary
             for (int i = 0; i < baseSetup.Length; i++)
             {
                 //add key according to the save or default
@@ -35,7 +35,7 @@ public class KeyBindManager : MonoBehaviour
                 //sets display text for keys
                 baseSetup[i].keyDisplayText.text = keys[baseSetup[i].keyName].ToString();
             }
-        }
+        
     }
     private void OnGUI()
     {

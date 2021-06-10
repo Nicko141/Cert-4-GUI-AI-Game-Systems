@@ -7,10 +7,14 @@ using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
+    
     public AudioMixer masterAudio;
     public AudioSource audioSource;
     public AudioClip[] clicks;
     public GameObject OptionsPanel;
+    public Slider music;
+    public Slider SFX;
+    public Toggle mute;
     
     #region Audio
     public void PlayClick()
@@ -28,10 +32,14 @@ public class SceneChanger : MonoBehaviour
     public void ChangeVolume(float volume)
     {
         masterAudio.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
+        PlayerPrefs.Save();
     }
     public void ChangeSFXVolume(float volume)
     {
         masterAudio.SetFloat("SFXvolume", volume);
+        PlayerPrefs.SetFloat("SFXvolume", volume);
+        PlayerPrefs.Save();
     }
     // mute toggle
     public void ToggleMute(bool isMuted)
@@ -39,10 +47,15 @@ public class SceneChanger : MonoBehaviour
         if (isMuted)
         {
             masterAudio.SetFloat("isMutedVolume", -80);
+            //mute.isOn;
+            PlayerPrefs.SetFloat("isMutedVolume", -80);
+            PlayerPrefs.Save();
         }
         else
         {
             masterAudio.SetFloat("isMutedVolume", 0);
+            PlayerPrefs.SetFloat("isMutedVolume", 0);
+            PlayerPrefs.Save();
         }
     }
     #endregion
@@ -50,13 +63,17 @@ public class SceneChanger : MonoBehaviour
     //change scene
     public void ChangeScene(int sceneIndex)
     {
+        
         SceneManager.LoadScene(sceneIndex);
     }
     public void NewGame(int sceneIndex)
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("Loaded");
         SceneManager.LoadScene(sceneIndex);
+
     }
+    
     
     //exit to desktop/quit
     public void ExitToDesktop()
@@ -108,6 +125,13 @@ public class SceneChanger : MonoBehaviour
     #endregion
     private void Start()
     {
+        masterAudio.SetFloat("volume", PlayerPrefs.GetFloat("volume"));
+        masterAudio.SetFloat("SFXvolume", PlayerPrefs.GetFloat("SFXvolume"));
+        masterAudio.SetFloat("isMutedVolume", PlayerPrefs.GetFloat("isMutedVolume"));
+        music.value = PlayerPrefs.GetFloat("volume");
+        SFX.value = PlayerPrefs.GetFloat("SFXvolume");
+
+        
         ResolutionSetUp();
     }
     // Update is called once per frame

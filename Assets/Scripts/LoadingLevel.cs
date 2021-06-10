@@ -12,6 +12,7 @@ public class LoadingLevel : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
@@ -29,6 +30,7 @@ public class LoadingLevel : MonoBehaviour
     }
     public void LoadLevel (int scenenIndex)
     {
+
         StartCoroutine(LoadAsynchronously(scenenIndex));
     }
 }

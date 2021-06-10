@@ -13,7 +13,7 @@ public class PlayerSaveAndLoad : MonoBehaviour
         }
         if (!PlayerPrefs.HasKey("Loaded"))
         {
-            PlayerPrefs.DeleteAll();
+            //PlayerPrefs.DeleteAll();
             //first load function... set up character data
             FirstLoad();
             //save data... makes first save file in binary
@@ -28,7 +28,7 @@ public class PlayerSaveAndLoad : MonoBehaviour
     }
     public void FirstLoad()
     {
-
+        
     }
 
     public void Save()
